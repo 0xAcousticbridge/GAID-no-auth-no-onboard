@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+:root {
+  --glow-color: theme('colors.yellow.500');
+  --accent-color: theme('colors.yellow.500');
+}
+
+/* Base theme */
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+}
+
+/* Remove focus outline */
+*:focus {
+  outline: none !important;
+}
+
+/* Maintain accessibility - only show focus ring when using keyboard */
+*:focus-visible {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px;
+}
+
+/* Card styles */
+.card {
+  @apply bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 transition-all hover:scale-[1.02];
+}
+
+.card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color), 0.2);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-yellow-500 text-gray-900 rounded-lg px-4 py-2 transition-all;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  @apply bg-yellow-400;
+}
+
+/* Category cards */
+.category-card {
+  @apply bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 transition-all;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card:hover {
+  border-color: var(--accent-color);
+  transform: scale(1.02);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+/* Loading states */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode */
+.dark {
+  --glow-color: theme('colors.yellow.400');
+  --accent-color: theme('colors.yellow.400');
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Skip link */
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-yellow-500 focus:text-gray-900 focus:rounded-lg;
+}
